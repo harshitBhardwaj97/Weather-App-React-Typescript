@@ -1,0 +1,26 @@
+name: Periodic health check
+
+# Check service status every 5 mins
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+
+jobs:
+  periodic_health_check:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Check the weather app deployed URL
+        uses: jtalk/url-health-check-action@v4
+        with:
+          url: https://weather-app-react-typescript.onrender.com/
+          max-attempts: 3
+          retry-delay: 2s
+      - name: Notify about service not available
+        uses: rjstone/discord-webhook-notify@v1
+        if: ${{ failure() }}
+        with:
+          severity: error
+          text: Weather App is not available !
+          color: "#BB2124"
+          details: "https://weather-app-react-typescript.onrender.com/ is not accessible."
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
