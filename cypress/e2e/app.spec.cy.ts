@@ -23,6 +23,7 @@ describe("Weather App Tests", () => {
     cy.get('[data-cy="weather-component"]', { timeout: 15000 }).should(
       "be.visible"
     );
+    cy.screenshot();
     cy.get('[data-cy="weather-component"]').should("contain", "Delhi");
     cy.get('[data-cy="error-message"]').should("not.exist");
   });
@@ -37,6 +38,7 @@ describe("Weather App Tests", () => {
     cy.get('[data-cy="weather-component"]', { timeout: 15000 }).should(
       "be.visible"
     );
+    cy.screenshot();
     cy.get('[data-cy="weather-component"]').should("contain", "Mumbai");
     cy.get('[data-cy="error-message"]').should("not.exist");
   });

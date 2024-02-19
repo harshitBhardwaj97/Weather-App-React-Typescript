@@ -27,6 +27,11 @@ jobs:
         with:
           start: npm run preview
           wait-on: http://localhost:4173
+      - name: Upload Cypress Screenhots Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Cypress Screenhots
+          path: cypress/screenshots
 
   trigger_deployment:
     # Trigger deployment only on push on main, and also when #skip is not present in commit message
