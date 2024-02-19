@@ -6,6 +6,8 @@ export default defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
-    baseUrl: "http://localhost:4173", // Build Server URL
+    baseUrl: "http://localhost:5173",
+    supportFile: "cypress/support/e2e.{js,jsx,ts,tsx}",
   },
+  projectId: "t6srp4",
 });

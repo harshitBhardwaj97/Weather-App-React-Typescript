@@ -25,8 +25,12 @@ jobs:
       - name: e2e tests with cypress
         uses: cypress-io/github-action@v6
         with:
-          start: npm run preview
-          wait-on: http://localhost:4173
+          start: npm run dev
+          record: true
+          wait-on: http://localhost:5173
+        env:
+          CYPRESS_RECORD_KEY: ${{secrets.CYPRESS_RECORD_KEY}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: Upload Cypress Screenhots Artifact
         uses: actions/upload-artifact@v4
         with:

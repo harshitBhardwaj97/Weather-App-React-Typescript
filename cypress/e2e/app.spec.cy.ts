@@ -24,7 +24,9 @@ describe("Weather App Tests", () => {
       "be.visible"
     );
     cy.screenshot();
-    cy.get('[data-cy="weather-component"]').should("contain", "Delhi");
+    cy.get('[data-cy="weather-component"]')
+      .should("contain", "Delhi")
+      .screenshot();
     cy.get('[data-cy="error-message"]').should("not.exist");
   });
 
@@ -39,7 +41,9 @@ describe("Weather App Tests", () => {
       "be.visible"
     );
     cy.screenshot();
-    cy.get('[data-cy="weather-component"]').should("contain", "Mumbai");
+    cy.get('[data-cy="weather-component"]')
+      .should("contain", "Mumbai")
+      .screenshot();
     cy.get('[data-cy="error-message"]').should("not.exist");
   });
 

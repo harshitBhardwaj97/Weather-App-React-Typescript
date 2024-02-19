@@ -20,5 +20,6 @@ import "./commands";
 // require('./commands')
 
 Cypress.Screenshot.defaults({
+  scale: true,
   capture: "fullPage",
 });
