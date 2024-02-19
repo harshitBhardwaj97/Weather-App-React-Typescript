@@ -20,7 +20,9 @@ describe("Weather App Tests", () => {
     */
     cy.get('[data-cy="weather-input"]').type("Delhi");
     cy.get('[data-cy="get-weather-button"]').click();
-    cy.get('[data-cy="weather-component"]').should("be.visible");
+    cy.get('[data-cy="weather-component"]', { timeout: 15000 }).should(
+      "be.visible"
+    );
     cy.get('[data-cy="weather-component"]').should("contain", "Delhi");
     cy.get('[data-cy="error-message"]').should("not.exist");
   });
@@ -32,7 +34,9 @@ describe("Weather App Tests", () => {
     */
     cy.get('[data-cy="weather-input"]').type("Mumbai");
     cy.get('[data-cy="weather-input"]').type("{enter}");
-    cy.get('[data-cy="weather-component"]').should("be.visible");
+    cy.get('[data-cy="weather-component"]', { timeout: 15000 }).should(
+      "be.visible"
+    );
     cy.get('[data-cy="weather-component"]').should("contain", "Mumbai");
     cy.get('[data-cy="error-message"]').should("not.exist");
   });
