@@ -8,6 +8,9 @@ on:
     branches: [main]
     types: [opened, synchronize]
 
+env:
+  VITE_APP_API_KEY: ${{ secrets.VITE_APP_API_KEY }}
+
 jobs:
   build_and_test_app:
     runs-on: ubuntu-20.04
