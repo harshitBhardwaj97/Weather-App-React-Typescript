@@ -35,22 +35,26 @@ export default function App() {
 
   return (
     <>
-      <div className="max-w-7xl mx-auto h-screen grid place-content-center bg-gray-200">
+      <div className="grid h-screen mx-auto bg-gray-200 max-w-7xl place-content-center">
         <main className="p-2 m-2 flex flex-col gap-3 items-center justify-center min-w-[400px] min-h-[420px] border border-black rounded-sm  bg-gray-400">
-          <h1 className="text-center font-bold text-3xl">Weather App</h1>
+          <h1 className="text-3xl font-bold text-center">Weather App</h1>
           <input
             type="text"
             value={location}
             placeholder="Enter Location"
-            className="px-2 py-4 rounded-full text-xl focus:outline-none shadow-lg border border-black/80 bg-gray-300 text-black/80"
+            className="px-2 py-4 text-xl bg-gray-300 border rounded-full shadow-lg focus:outline-none border-black/80 text-black/80"
             onChange={(e) => setLocation(e.target.value)}
             required
+            data-cy="weather-input"
             onKeyDownCapture={handleEnterKeyPress}
           />
 
           {/* To be displayed when no location is entered */}
           {!location && (
-            <div className="text-center p-2 text-red-700 font-bold">
+            <div
+              className="p-2 font-bold text-center text-red-700"
+              data-cy="valid-location-message"
+            >
               Enter valid location to get weather details
             </div>
           )}
@@ -62,6 +66,7 @@ export default function App() {
             hover:bg-red-500 hover:text-white ease-linear duration-150
             "
               onClick={() => fetchWeather(location)}
+              data-cy="get-weather-button"
             >
               Get Weather
             </button>
@@ -76,7 +81,12 @@ export default function App() {
 
           {/* In case of Error */}
           {error && (
-            <div className="text-red-700 font-bold w-[70%]">{error}</div>
+            <div
+              className="text-red-700 font-bold w-[70%]"
+              data-cy="error-message"
+            >
+              {error}
+            </div>
           )}
 
           {/* Request Fetched Successfully, render the weather data */}

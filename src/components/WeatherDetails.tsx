@@ -4,22 +4,25 @@ export default function WeatherDetails(props: WeatherData) {
   const { main, name, sys, weather, wind } = props;
 
   return (
-    <div className="flex items-center gap-2 p-2 relative bg-gray-300 rounded-md shadow-xl min-w-[360px]">
-      <div className="flex-1 flex flex-col items-center justify-evenly h-full gap-2">
+    <div
+      className="flex items-center gap-2 p-2 relative bg-gray-300 rounded-md shadow-xl min-w-[360px]"
+      data-cy="weather-component"
+    >
+      <div className="flex flex-col items-center flex-1 h-full gap-2 justify-evenly">
         {/* Location Details */}
         <h2>
-          <span className="font-bold text-xl">{name}</span>, {sys.country}{" "}
+          <span className="text-xl font-bold">{name}</span>, {sys.country}{" "}
           <br />
           {weather[0].description}
         </h2>
         <div>
           <p>
             {/* Temparature */}
-            <span className="font-bold text-3xl">{main.temp} °C</span>
+            <span className="text-3xl font-bold">{main.temp} °C</span>
           </p>
         </div>
       </div>
-      <div className="flex-1 flex flex-col items-center justify-evenly gap-2">
+      <div className="flex flex-col items-center flex-1 gap-2 justify-evenly">
         {/* Weather Icon */}
         <img
           className="rounded-lg"
