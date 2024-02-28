@@ -1,9 +1,13 @@
 name: Periodic health check
 
-# Check service status every 5 mins
+# Changed back from schedule to on push
 on:
-  schedule:
-    - cron: "*/5 * * * *"
+  push:
+    branches:
+      - main
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize]
 
 jobs:
   periodic_health_check:
